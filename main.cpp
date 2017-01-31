@@ -21,7 +21,7 @@ void print_v_pair(const vector<array<double, 2>> &v){
     cout << endl;
 }
 
-void print_v(const vector<double> &v){
+void print_v(const vector<int> &v){
     for(auto it = v.cbegin();it != v.cend(); ++it){
         cout << *it << " ";
     }
@@ -74,13 +74,28 @@ int main()
 //    double cost = second_case(W, v_inp);
 //    cout << fixed << setprecision(3) << cost << endl;
 
-    vector<double> test;
-    for(double i = 0.0; i < 30.0; ++i){
-        test.push_back(i);
-    }
-    for(auto &it:test){
-        cout << it << endl;
-    }
+    /// ========================================================================
+
+    int n;
+    vector<int> v_out;
+    cin >> n;
+    third_case(n, v_out);
+//    cout << v_out.size() << endl;
+    print_v(v_out);
+
+
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -79,3 +79,69 @@ double second_case(int W, std::vector<std::array<double, 2> > &v_pair)
 
     return ret_cost;
 }
+
+/*
+ * По данному числу 1 ≤ n ≤ 10^9 найдите максимальное число k,
+ * для которого n можно представить как сумму k различных натуральных слагаемых.
+ * Выведите в первой строке число k, во второй — k слагаемых.
+ */
+
+void third_case(int n, std::vector<int> &v_out){
+
+    int cur_summ = 0;   // текущая сумма
+    int sur = n;        // отсавшееся число для разложения
+    int i = 1;
+
+    while (cur_summ != n) {
+
+        if(sur > i * 2){            // sur >= i + (i + 1)
+
+            cur_summ += i;
+            v_out.push_back(i);
+            sur = n - cur_summ;
+            ++i;
+        }
+        else{
+
+            cur_summ += sur;
+            v_out.push_back(sur);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
