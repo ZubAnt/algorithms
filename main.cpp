@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <chrono>
 #include <random>
 #include <vector>
@@ -8,7 +9,7 @@
 
 using namespace std;
 
-void print_v_pair(const vector<array<int, 2>> &v){
+void print_v_pair(const vector<array<double, 2>> &v){
 
     for(auto it = v.cbegin();it != v.cend(); ++it){
         cout << (*it)[0] << " ";
@@ -20,7 +21,7 @@ void print_v_pair(const vector<array<int, 2>> &v){
     cout << endl;
 }
 
-void print_v(const vector<int> &v){
+void print_v(const vector<double> &v){
     for(auto it = v.cbegin();it != v.cend(); ++it){
         cout << *it << " ";
     }
@@ -59,6 +60,27 @@ int main()
 
     /// ========================================================================
 
+
+//    int n, W,ci, wi;
+//    vector<array<double, 2>> v_inp;
+
+//    cin >> n >> W;
+//    for(int i = 0; i < n; ++i){
+//        cin >> ci >> wi;
+//        v_inp.push_back({static_cast<double>(ci),
+//                         static_cast<double>(wi)});
+//    }
+
+//    double cost = second_case(W, v_inp);
+//    cout << fixed << setprecision(3) << cost << endl;
+
+    vector<double> test;
+    for(double i = 0.0; i < 30.0; ++i){
+        test.push_back(i);
+    }
+    for(auto &it:test){
+        cout << it << endl;
+    }
     return 0;
 }
 

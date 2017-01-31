@@ -18,8 +18,7 @@ static bool comp_by_end(std::array<int, 2> &a, std::array<int, 2> &b){
     return a[1] < b[1];
 }
 
-void first_case(std::vector<std::array<int, 2>> &v_pair,
-                                    std::vector<int> &v_out){
+void first_case(std::vector<std::array<int, 2>> &v_pair, std::vector<int> &v_out){
 
     if(v_pair.empty()){
 
@@ -46,3 +45,37 @@ void first_case(std::vector<std::array<int, 2>> &v_pair,
  * стоимость и объём при этом пропорционально уменьшатся), помещающихся в данный рюкзак,
  * с точностью не менее трёх знаков после запятой.
  */
+
+static bool comp_by_cost(std::array<double, 2> &a, std::array<double, 2> &b){
+    return (a[0] / a[1]) > (b[0] / b[1]);
+}
+
+double second_case(int W, std::vector<std::array<double, 2> > &v_pair)
+{
+    if(v_pair.empty()){
+
+        throw std::logic_error("empty input vector");
+    }
+
+    double curr_W = 0.0;
+    double all_W = static_cast<double>(W);
+    double ret_cost = 0.0;
+
+    std::sort(v_pair.begin(), v_pair.end(), comp_by_cost);
+
+    for(auto it = v_pair.begin(); it != v_pair.end(); ++it){
+
+        if(curr_W + (*it)[1] <= all_W){
+
+            curr_W += (*it)[1];
+            ret_cost += (*it)[0];
+        }
+        else{
+
+            ret_cost += (*it)[0] * (all_W - curr_W) / (*it)[1];
+            break;
+        }
+    }
+
+    return ret_cost;
+}
