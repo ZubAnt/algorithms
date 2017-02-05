@@ -6,6 +6,9 @@
 #include <array>
 #include <string>
 #include <typeinfo>
+#include <cstdio>
+#include <stdio.h>
+#include <fstream>
 
 #include "Fibonacci/fibonacci.h"
 #include "GreedyAlgorithms/gralg.h"
@@ -43,9 +46,9 @@ int main()
 //    vector<array<int, 2>> v_inp;
 //    vector<int> v_out;
 
-    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    std::default_random_engine gen (seed);
-    std::uniform_int_distribution<int> dist (10, 99);
+//    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+//    std::default_random_engine gen (seed);
+//    std::uniform_int_distribution<int> dist (10, 99);
 
 ////    for(int i = 0; i < 30; ++i){
 ////        v_inp.push_back({dist(gen), dist(gen)});
@@ -89,43 +92,44 @@ int main()
 
     /// ========================================================================
 
-    string str;
-    string out;
-    std::getline (std::cin, str);
-    Huffman<char, int> obj;
-    std::cout << obj.string_to_code(str) << std::endl;
+    int len = 64;
+    std::string test_str;
 
-//    my_priority_queue<char, int> test;
+    static const char alphanum[] = "abcdefghijklmnopqrstuvwxyz";
 
-//    test.InsertWithPriority('a', 80);
-//    test.InsertWithPriority('a', 52);
-//    test.InsertWithPriority('a', 85);
-//    test.InsertWithPriority('a', 55);
-//    test.InsertWithPriority('a', 18);
-//    test.InsertWithPriority('a', 40);
-//    test.InsertWithPriority('a', 36);
-//    test.InsertWithPriority('a', 77);
-//    test.InsertWithPriority('a', 77);
-//    test.InsertWithPriority('a', 77);
-//    test.InsertWithPriority('a', 77);
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::default_random_engine gen (seed);
+    std::uniform_int_distribution<int> dist (0, sizeof(alphanum) - 1);
 
-//    test.show_all_data();
-//    std::cout << "=============\n";
-//    std::cout << "depth = " << test.get_depth() << std::endl;
-//    test.show_all_data();
+    for (int i = 0; i < len; ++i) {
+
+        test_str += alphanum[dist(gen)];
+    }
+
+    std::cout << test_str << std::endl << std::endl;
+    Huffman<char, int> obj_to_code;
+    std::cout << obj_to_code.string_to_code(test_str) << std::endl;
+
+    /// ========================================================================
+
+    int numb_data, len_code;
+    std::string data;
+    std::string code;
+    Huffman<char, int> obj_from_code;
+
+    fstream inp_stream("out.txt", std::fstream::in);
+
+    inp_stream >> numb_data >> len_code;
+
+    for(int i = 0; i < numb_data; i++){
+        inp_stream >> data >> code;
+        obj_from_code.push_back_DataWithCode(data.front(), code);
+    }
+
+    inp_stream >> code;
+
+    std::cout << std::endl << "code:   " << test_str
+              << std::endl << "decode: " << obj_from_code.code_to_string(code) << std::endl;
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
