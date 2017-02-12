@@ -16,6 +16,7 @@
 #include "GreedyAlgorithms/gralg.h"
 #include "Huffman_code/huffman.h"
 #include "Heap/heap.h"
+#include "BinarySearch/binarysearch.h"
 
 using namespace std;
 
@@ -183,30 +184,50 @@ int main()
 
     /// ========================================================================
 
-    std::vector<int> v1 = {8, -3, 2, -4, -4, 1, -10};
-    std::vector<int> v2 = {3,20,4,30,21,30,5,31,60,30,31,31};
-    std::vector<int> v3 = {2,4,5,12,5,6};
-    std::vector<int> v4 = {3,20,4,30,21,30,5,31,60,30,21,31};
+//    std::vector<int> v1 = {8, -3, 2, -4, -4, 1, -10};
+//    std::vector<int> v2 = {3,20,4,30,21,30,5,31,60,30,31,31};
+//    std::vector<int> v3 = {2,4,5,12,5,6};
+//    std::vector<int> v4 = {3,20,4,30,21,30,5,31,60,30,21,31};
 
-    heap h1(v1);
-    heap h2(v2);
-    heap h3(v3);
-    heap h4(v4);
+//    heap h1(v1);
+//    heap h2(v2);
+//    heap h3(v3);
+//    heap h4(v4);
 
-    if(h1.IsMaxHeap()){
-        std::cout << "True" << std::endl;
-    }
-    if(h2.IsMinHeap()){
-        std::cout << "True" << std::endl;
-    }
-    if(h3.IsMinHeap()){
-        std::cout << "True" << std::endl;
-    }
-    if(h4.IsMinHeap()){
-        std::cout << "True" << std::endl;
-    }
+//    if(h1.IsMaxHeap()){
+//        std::cout << "True" << std::endl;
+//    }
+//    if(h2.IsMinHeap()){
+//        std::cout << "True" << std::endl;
+//    }
+//    if(h3.IsMinHeap()){
+//        std::cout << "True" << std::endl;
+//    }
+//    if(h4.IsMinHeap()){
+//        std::cout << "True" << std::endl;
+//    }
+
+    /// ========================================================================
 
 
+    int n1, n2;
+    int x;
+    std::vector<int> v;
+
+    std::cin >> n1;
+
+    for(int i = 0; i < n1 ; ++i){
+        std::cin >> x;
+        v.push_back(x);
+    }
+
+    BinarySearch obj(v);
+    std::cin >> n2;
+
+    for(int i = 0; i < n2; ++i){
+        std::cin >> x;
+        std::cout << obj.get_index(x) << " ";
+    }
 
     return 0;
 }
