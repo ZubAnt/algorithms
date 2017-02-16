@@ -8,11 +8,13 @@ QMAKE_CFLAGS += -fpermissive -std=c++11
 SOURCES += main.cpp Fibonacci/Fibonacci.cpp \
     GreedyAlgorithms/gralg.cpp \
     Heap/heap.cpp \
-    BinarySearch/binarysearch.cpp
+    BinarySearch/binarysearch.cpp \
+    Mearge/mearge.cpp
 
 HEADERS += \
     Fibonacci/fibonacci.h \
     GreedyAlgorithms/gralg.h \
     Huffman_code/huffman.h \
     Heap/heap.h \
-    BinarySearch/binarysearch.h
+    BinarySearch/binarysearch.h \
+    Mearge/mearge.h

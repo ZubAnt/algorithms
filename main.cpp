@@ -11,12 +11,15 @@
 #include <fstream>
 #include <algorithm>
 #include <queue>
+#include <ctime>
+#include <climits>>
 
 #include "Fibonacci/fibonacci.h"
 #include "GreedyAlgorithms/gralg.h"
 #include "Huffman_code/huffman.h"
 #include "Heap/heap.h"
 #include "BinarySearch/binarysearch.h"
+#include "Mearge/mearge.h"
 
 using namespace std;
 
@@ -33,9 +36,25 @@ void print_v_pair(const vector<array<double, 2>> &v){
 }
 
 void print_v(const vector<int> &v){
+
     for(auto it = v.cbegin();it != v.cend(); ++it){
-        std::cout << *it << std::endl;
+        std::cout << *it << " ";
     }
+    std::cout << std::endl;
+}
+
+std::vector<int> generate_vector(unsigned int size){
+
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::default_random_engine gen (seed);
+    std::uniform_int_distribution<int> dist (0, 1024);
+
+    std::vector<int> v;
+    for (unsigned i = 0; i < size; ++i) {
+        v.push_back(dist(gen));
+    }
+
+    return v;
 }
 
 int main()
@@ -210,24 +229,84 @@ int main()
     /// ========================================================================
 
 
-    int n1, n2;
-    int x;
-    std::vector<int> v;
+//    int n1, n2;
+//    int x;
+//    std::vector<int> v;
 
-    std::cin >> n1;
+//    std::cin >> n1;
 
-    for(int i = 0; i < n1 ; ++i){
-        std::cin >> x;
-        v.push_back(x);
-    }
+//    for(int i = 0; i < n1 ; ++i){
+//        std::cin >> x;
+//        v.push_back(x);
+//    }
 
-    BinarySearch obj(v);
-    std::cin >> n2;
+//    BinarySearch obj(v);
+//    std::cin >> n2;
 
-    for(int i = 0; i < n2; ++i){
-        std::cin >> x;
-        std::cout << obj.get_index(x) << " ";
-    }
+//    for(int i = 0; i < n2; ++i){
+//        std::cin >> x;
+//        std::cout << obj.get_index(x) << " ";
+//    }
+
+    /// ========================================================================
+
+//    unsigned int size = UINT_MAX / 32;
+
+//    clock_t start_time =  clock(); // начальное время
+//    std::vector<int> v1 = generate_vector(size);
+
+    // 15522751 тиков; 15.5209 c.
+    // 14388298 тиков; 14.3865 c.
+    // 14066461 тиков; 14.0641 c.
+    // 13440047 тиков; 13.4385 c.
+
+//    std::vector<int> v1 = v;
+//    clock_t end_time = clock(); // конечное время
+//    std::cout<< end_time - start_time  << " тиков; " << static_cast<float>(end_time - start_time) / CLOCKS_PER_SEC << " c." << std::endl;
+
+
+//    start_time = clock();
+//    std::vector<int> v2 = std::move(v);
+//    end_time = clock();
+//    std::cout<< end_time - start_time  << " тиков; " << static_cast<float>(end_time - start_time) / CLOCKS_PER_SEC << " c." << std::endl;
+
+//    start_time = clock();
+//    std::vector<int> v3 = std::forward<std::vector<int>>(v);
+//    end_time = clock();
+//    std::cout<< end_time - start_time  << " тиков; " << static_cast<float>(end_time - start_time) / CLOCKS_PER_SEC << " c." << std::endl;
+
+//    print_v(v);
+
+
+//    start_time = clock();
+//    std::vector<int> v2 = std::move(generate_vector(size));
+//    end_time = clock();
+//    std::cout<< end_time - start_time  << " тиков; " << static_cast<float>(end_time - start_time) / CLOCKS_PER_SEC << " c." << std::endl;
+
+//    // 14813043 тиков; 14.8107 c.
+//    // 14193880 тиков; 14.1916 c.
+//    // 13810689 тиков; 13.8088 c.
+//    // 13656703 тиков; 13.6548 c.
+//    // 13959222 тиков; 13.9571 c.
+//    // 13897129 тиков; 13.8951 c.
+
+//    start_time = clock();
+//    std::vector<int> v3 = std::forward<std::vector<int>>(generate_vector(size));
+//    // 13205443 тиков; 13.2035 c.
+//    // 13112658 тиков; 13.111 c.
+//    // 13727244 тиков; 13.7252 c.
+//    end_time = clock();
+//    std::cout<< end_time - start_time  << " тиков; " << static_cast<float>(end_time - start_time) / CLOCKS_PER_SEC << " c." << std::endl;
+
+    /// ========================================================================
+
+    unsigned int size = 12;
+    std::vector<int> data = std::forward<std::vector<int>>(generate_vector(size));
+    print_v(data);
+
+    MeargeSort(data);
+    print_v(data);
+
 
     return 0;
 }
