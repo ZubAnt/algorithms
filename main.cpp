@@ -300,13 +300,14 @@ int main()
 
     /// ========================================================================
 
-    unsigned int size = 12;
-    std::vector<int> data = std::forward<std::vector<int>>(generate_vector(size));
-    print_v(data);
+    unsigned int size = 4096;
+    std::vector<int> data1 = std::forward<std::vector<int>>(generate_vector(size));
 
-    MeargeSort(data);
-    print_v(data);
+    Mearge<int> obj(data1);
 
+    std::cout << obj.tupoy() <<std::endl;
+    obj.mearge_sort();
+    std::cout << obj.disorder() <<std::endl;
 
     return 0;
 }
