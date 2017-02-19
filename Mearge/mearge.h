@@ -15,7 +15,7 @@ public:
     void push_back(const T &data);
     void mearge_sort();
     std::size_t disorder();                     // return disorder coefficient; call after mearge_sort
-    std::size_t tupoy();
+    std::size_t tupoy_disorder();
     void show();
 
 private:
@@ -109,7 +109,7 @@ std::size_t Mearge<T>::disorder()
 }
 
 template<class T>
-std::size_t Mearge<T>::tupoy()
+std::size_t Mearge<T>::tupoy_disorder()
 {
     std::size_t cnt = 0;
     std::size_t size = Data.size();

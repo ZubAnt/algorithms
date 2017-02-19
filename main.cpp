@@ -305,7 +305,7 @@ int main()
 
     Mearge<int> obj(data1);
 
-    std::cout << obj.tupoy() <<std::endl;
+    std::cout << obj.tupoy_disorder() <<std::endl;
     obj.mearge_sort();
     std::cout << obj.disorder() <<std::endl;
 
