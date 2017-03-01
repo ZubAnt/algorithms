@@ -13,6 +13,7 @@
 #include <queue>
 #include <ctime>
 #include <climits>>
+#include <sys/socket.h>
 
 #include "Fibonacci/fibonacci.h"
 #include "GreedyAlgorithms/gralg.h"
@@ -20,6 +21,7 @@
 #include "Heap/heap.h"
 #include "BinarySearch/binarysearch.h"
 #include "Mearge/mearge.h"
+#include "Technopark/factorial_last_zero_digits.h"
 
 using namespace std;
 
@@ -300,14 +302,18 @@ int main()
 
     /// ========================================================================
 
-    unsigned int size = 4096;
-    std::vector<int> data1 = std::forward<std::vector<int>>(generate_vector(size));
+//    unsigned int size = 4096;
+//    std::vector<int> data1 = std::forward<std::vector<int>>(generate_vector(size));
 
-    Mearge<int> obj(data1);
+//    Mearge<int> obj(data1);
 
-    std::cout << obj.tupoy_disorder() <<std::endl;
-    obj.mearge_sort();
-    std::cout << obj.disorder() <<std::endl;
+//    std::cout << obj.tupoy_disorder() <<std::endl;
+//    obj.mearge_sort();
+//    std::cout << obj.disorder() <<std::endl;
+
+    int64_t n = 500;
+    std::cout << factorial_last_zero_digits(n) << std::endl;
+
 
     return 0;
 }

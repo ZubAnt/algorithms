@@ -8,7 +8,9 @@ QMAKE_CFLAGS += -fpermissive -std=c++11
 SOURCES += main.cpp Fibonacci/Fibonacci.cpp \
     GreedyAlgorithms/gralg.cpp \
     Heap/heap.cpp \
-    BinarySearch/binarysearch.cpp
+    BinarySearch/binarysearch.cpp \
+    Technopark/factorial_last_zero_digits.cpp \
+    Technopark/1_sem/getprimes.cpp
 
 HEADERS += \
     Fibonacci/fibonacci.h \
@@ -16,4 +18,6 @@ HEADERS += \
     Huffman_code/huffman.h \
     Heap/heap.h \
     BinarySearch/binarysearch.h \
-    Mearge/mearge.h
+    Mearge/mearge.h \
+    Technopark/factorial_last_zero_digits.h \
+    Technopark/1_sem/getprimes.h
