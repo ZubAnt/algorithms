@@ -325,6 +325,7 @@ int main()
     for( int i = 0; i < primes.Size(); ++i ) {
         std::cout << primes[i] << " ";
     }
+    std::cout << " hello" << std::endl;
 
 
     return 0;
