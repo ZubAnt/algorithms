@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <chrono>
 #include <random>
-#include <vector>
+//#include <vector>
 #include <array>
 #include <string>
 #include <typeinfo>
@@ -23,42 +23,43 @@
 #include "Mearge/mearge.h"
 #include "Technopark/factorial_last_zero_digits.h"
 #include "Technopark/1_sem/getprimes.h"
+#include "Vector/vector.h"
 
 using namespace std;
 
-void print_v_pair(const vector<array<double, 2>> &v){
+//void print_v_pair(const vector<array<double, 2>> &v){
 
-    for(auto it = v.cbegin();it != v.cend(); ++it){
-        cout << (*it)[0] << " ";
-    }
-    cout << endl;
-    for(auto it = v.cbegin();it != v.cend(); ++it){
-        cout << (*it)[1] << " ";
-    }
-    cout << endl;
-}
+//    for(auto it = v.cbegin();it != v.cend(); ++it){
+//        cout << (*it)[0] << " ";
+//    }
+//    cout << endl;
+//    for(auto it = v.cbegin();it != v.cend(); ++it){
+//        cout << (*it)[1] << " ";
+//    }
+//    cout << endl;
+//}
 
-void print_v(const vector<int> &v){
+//void print_v(const vector<int> &v){
 
-    for(auto it = v.cbegin();it != v.cend(); ++it){
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
-}
+//    for(auto it = v.cbegin();it != v.cend(); ++it){
+//        std::cout << *it << " ";
+//    }
+//    std::cout << std::endl;
+//}
 
-std::vector<int> generate_vector(unsigned int size){
+//std::vector<int> generate_vector(unsigned int size){
 
-    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    std::default_random_engine gen (seed);
-    std::uniform_int_distribution<int> dist (0, 1024);
+//    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+//    std::default_random_engine gen (seed);
+//    std::uniform_int_distribution<int> dist (0, 1024);
 
-    std::vector<int> v;
-    for (unsigned i = 0; i < size; ++i) {
-        v.push_back(dist(gen));
-    }
+//    std::vector<int> v;
+//    for (unsigned i = 0; i < size; ++i) {
+//        v.push_back(dist(gen));
+//    }
 
-    return v;
-}
+//    return v;
+//}
 
 int main()
 {
@@ -83,7 +84,7 @@ int main()
 
     //    for(int i = 0; i < n; ++i){
     //        cin >> l >> r;
-    //        v_inp.push_back({l, r});
+    //        v_inp.push_ba"Technopark/1_semck({l, r});
     //    }
 
     //    first_case(v_inp, v_out);
@@ -317,16 +318,63 @@ int main()
     //    std::cout << factorial_last_zero_digits(n) << std::endl;
 
     /// ========================================================================
-    int n = 0;
-    std::cin >> n;
+//    int n = 0;
+//    std::cin >> n;
 
-    const CIntVector primes = GetPrimes( n );
+//    const CIntVector primes = GetPrimes( n );
 
-    for( int i = 0; i < primes.Size(); ++i ) {
-        std::cout << primes[i] << " ";
-    }
-    std::cout << " hello" << std::endl;
+//    for( int i = 0; i < primes.Size(); ++i ) {
+//        std::cout << primes[i] << " ";
+//    }
+//    std::cout << " hello" << std::endl;
+    /// ========================================================================
 
+//    int n = 0;
+//    bool flag = true;
+
+//    std::cin >> n;
+//    CirculaList list;
+
+//    for(int i = 0; i < n ; ++i){
+
+//        int command = 0;
+//        int data = 0;
+//        std::cin >> command >> data;
+
+//        if(flag == true){
+
+//            if(command == 3 && flag == true){
+
+//                list.push_back(data);
+//            }
+//            else if(command == 2 && flag == true){
+
+//                try{
+
+//                    int pop = list.pop_front();
+//                    if(pop != data){ flag = false; }
+//                }
+//                catch(std::out_of_range &err){
+
+//                    if (data != -1) { flag = false; }
+//                }
+//            }
+
+//        }
+
+//    }
+//    if (flag == true) { std::cout << "YES" << std::endl; }
+//    else { std::cout << "NO" << std::endl; }
+
+    /// ========================================================================
+
+    size_t Size = 5;
+    int f[Size] = {1, 2, 3, 4, 5};
+    int s[Size];
+    std::copy(f + 0, f + 0, s);
+
+    for(size_t i = 0; i < Size; ++i){std::cout << s[i] << " "; }
+    std::cout << std::endl;
 
     return 0;
 }
