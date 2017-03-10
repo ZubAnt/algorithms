@@ -12,7 +12,7 @@
 #include <algorithm>
 #include <queue>
 #include <ctime>
-#include <climits>>
+#include <climits>
 #include <sys/socket.h>
 
 #include "Fibonacci/fibonacci.h"
@@ -24,42 +24,43 @@
 #include "Technopark/factorial_last_zero_digits.h"
 #include "Technopark/1_sem/getprimes.h"
 #include "Vector/vector.h"
+#include "Technopark/1_sem/circlearrbuff.h"
 
 using namespace std;
 
-//void print_v_pair(const vector<array<double, 2>> &v){
+void print_v_pair(const vector<array<double, 2>> &v){
 
-//    for(auto it = v.cbegin();it != v.cend(); ++it){
-//        cout << (*it)[0] << " ";
-//    }
-//    cout << endl;
-//    for(auto it = v.cbegin();it != v.cend(); ++it){
-//        cout << (*it)[1] << " ";
-//    }
-//    cout << endl;
-//}
+    for(auto it = v.cbegin();it != v.cend(); ++it){
+        cout << (*it)[0] << " ";
+    }
+    cout << endl;
+    for(auto it = v.cbegin();it != v.cend(); ++it){
+        cout << (*it)[1] << " ";
+    }
+    cout << endl;
+}
 
-//void print_v(const vector<int> &v){
+void print_v(const vector<int> &v){
 
-//    for(auto it = v.cbegin();it != v.cend(); ++it){
-//        std::cout << *it << " ";
-//    }
-//    std::cout << std::endl;
-//}
+    for(auto it = v.cbegin();it != v.cend(); ++it){
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+}
 
-//std::vector<int> generate_vector(unsigned int size){
+std::vector<int> generate_vector(unsigned int size){
 
-//    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-//    std::default_random_engine gen (seed);
-//    std::uniform_int_distribution<int> dist (0, 1024);
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::default_random_engine gen (seed);
+    std::uniform_int_distribution<int> dist (0, 1024);
 
-//    std::vector<int> v;
-//    for (unsigned i = 0; i < size; ++i) {
-//        v.push_back(dist(gen));
-//    }
+    std::vector<int> v;
+    for (unsigned i = 0; i < size; ++i) {
+        v.push_back(dist(gen));
+    }
 
-//    return v;
-//}
+    return v;
+}
 
 int main()
 {
@@ -368,13 +369,33 @@ int main()
 
     /// ========================================================================
 
-    size_t Size = 5;
-    int f[Size] = {1, 2, 3, 4, 5};
-    int s[Size];
-    std::copy(f + 0, f + 0, s);
+//    size_t Size = 5;
+//    int f[Size] = {1, 2, 3, 4, 5};
+//    int s[Size];
+//    std::copy(f + 0, f + 4, s + 5 - 4);
 
-    for(size_t i = 0; i < Size; ++i){std::cout << s[i] << " "; }
-    std::cout << std::endl;
+//    for(size_t i = 0; i < Size; ++i){std::cout << s[i] << " "; }
+//    std::cout << std::endl;
 
+    /// ========================================================================
+
+    size_t n = 0;
+    CircleArrBuff buff;
+    std::cin >> n;
+    bool check = true;
+    for(size_t i = 0; i < n; ++i){
+        int command, data;
+        std::cin >> command >> data;
+        if (command == 3 && check == true) { buff.push_back(data); }
+        else if (command == 2 && check == true) {
+            int val = buff.pop_front();
+            if(val != data){ check = false; }
+        }
+    }
+
+    if (check == true) { std::cout << "YES" << std::endl; }
+    else { std::cout << "NO" << std::endl; }
+
+    /// ========================================================================
     return 0;
 }
