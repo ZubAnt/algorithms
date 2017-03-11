@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <chrono>
 #include <random>
-//#include <vector>
+#include <vector>
 #include <array>
 #include <string>
 #include <typeinfo>
@@ -13,6 +13,7 @@
 #include <queue>
 #include <ctime>
 #include <climits>
+#include <string>
 #include <sys/socket.h>
 
 #include "Fibonacci/fibonacci.h"
@@ -25,6 +26,7 @@
 #include "Technopark/1_sem/getprimes.h"
 #include "Vector/vector.h"
 #include "Technopark/1_sem/circlearrbuff.h"
+#include "Stack/stack.h"
 
 using namespace std;
 
@@ -319,83 +321,153 @@ int main()
     //    std::cout << factorial_last_zero_digits(n) << std::endl;
 
     /// ========================================================================
-//    int n = 0;
-//    std::cin >> n;
+    //    int n = 0;
+    //    std::cin >> n;
 
-//    const CIntVector primes = GetPrimes( n );
+    //    const CIntVector primes = GetPrimes( n );
 
-//    for( int i = 0; i < primes.Size(); ++i ) {
-//        std::cout << primes[i] << " ";
-//    }
-//    std::cout << " hello" << std::endl;
+    //    for( int i = 0; i < primes.Size(); ++i ) {
+    //        std::cout << primes[i] << " ";
+    //    }
+    //    std::cout << " hello" << std::endl;
     /// ========================================================================
 
-//    int n = 0;
-//    bool flag = true;
+    //    int n = 0;
+    //    bool flag = true;
 
-//    std::cin >> n;
-//    CirculaList list;
+    //    std::cin >> n;
+    //    CirculaList list;
 
-//    for(int i = 0; i < n ; ++i){
+    //    for(int i = 0; i < n ; ++i){
 
-//        int command = 0;
-//        int data = 0;
-//        std::cin >> command >> data;
+    //        int command = 0;
+    //        int data = 0;
+    //        std::cin >> command >> data;
 
-//        if(flag == true){
+    //        if(flag == true){
 
-//            if(command == 3 && flag == true){
+    //            if(command == 3 && flag == true){
 
-//                list.push_back(data);
-//            }
-//            else if(command == 2 && flag == true){
+    //                list.push_back(data);
+    //            }
+    //            else if(command == 2 && flag == true){
 
-//                try{
+    //                try{
 
-//                    int pop = list.pop_front();
-//                    if(pop != data){ flag = false; }
-//                }
-//                catch(std::out_of_range &err){
+    //                    int pop = list.pop_front();
+    //                    if(pop != data){ flag = false; }
+    //                }
+    //                catch(std::out_of_range &err){
 
-//                    if (data != -1) { flag = false; }
-//                }
-//            }
+    //                    if (data != -1) { flag = false; }
+    //                }
+    //            }
 
-//        }
+    //        }
 
-//    }
-//    if (flag == true) { std::cout << "YES" << std::endl; }
-//    else { std::cout << "NO" << std::endl; }
-
-    /// ========================================================================
-
-//    size_t Size = 5;
-//    int f[Size] = {1, 2, 3, 4, 5};
-//    int s[Size];
-//    std::copy(f + 0, f + 4, s + 5 - 4);
-
-//    for(size_t i = 0; i < Size; ++i){std::cout << s[i] << " "; }
-//    std::cout << std::endl;
+    //    }
+    //    if (flag == true) { std::cout << "YES" << std::endl; }
+    //    else { std::cout << "NO" << std::endl; }
 
     /// ========================================================================
 
-    size_t n = 0;
-    CircleArrBuff buff;
-    std::cin >> n;
+    //    size_t Size = 5;
+    //    int f[Size] = {1, 2, 3, 4, 5};
+    //    int s[Size];
+    //    std::copy(f + 0, f + 4, s + 5 - 4);
+
+    //    for(size_t i = 0; i < Size; ++i){std::cout << s[i] << " "; }
+    //    std::cout << std::endl;
+
+    /// ========================================================================
+
+    //    size_t n = 0;
+    //    CircleArrBuff buff;
+    //    std::cin >> n;
+    //    bool check = true;
+    //    for(size_t i = 0; i < n; ++i){
+    //        int command, data;
+    //        std::cin >> command >> data;
+    //        if (command == 3 && check == true) { buff.push_back(data); }
+    //        else if (command == 2 && check == true) {
+    //            int val = buff.pop_front();
+    //            if(val != data){ check = false; }
+    //        }
+    //    }
+
+    //    if (check == true) { std::cout << "YES" << std::endl; }
+    //    else { std::cout << "NO" << std::endl; }
+
+    /// ========================================================================
+
+    std::string left, right;
+    Stack<char> stack;
+    std::cin >> left >> right;
+
+    std::string::iterator lit = left.begin();
+    std::string::iterator rit = right.begin();
+
+    std::string::iterator lend = left.end();
+    std::string::iterator rend = right.end();
+
+    bool is_lend = false;
+    bool is_rend = false;
     bool check = true;
-    for(size_t i = 0; i < n; ++i){
-        int command, data;
-        std::cin >> command >> data;
-        if (command == 3 && check == true) { buff.push_back(data); }
-        else if (command == 2 && check == true) {
-            int val = buff.pop_front();
-            if(val != data){ check = false; }
+
+    while (true) {
+
+        if (rit == rend){ is_rend = true; break; }
+
+        while (true) {
+
+            if (lit == lend) { is_lend = true; }
+
+            if (stack.is_empty() != true && check == true) {
+
+                if (stack.get_last() == *rit){
+                    stack.pop_back();
+                    ++rit;
+                    break;
+                }
+                else if(is_lend == false){
+                    stack.push_back(*lit);
+                    ++lit;
+                }
+                else if (is_lend == true) { check = false; }
+            }
+            else if(is_lend == false){
+                stack.push_back(*lit);
+                ++lit;
+            }
+            else if (is_lend == true) { break; check = false; }
         }
+        if (is_lend == true && check == false) { break; }
     }
 
-    if (check == true) { std::cout << "YES" << std::endl; }
+    if (is_rend == true) { std::cout << "YES" << std::endl; }
     else { std::cout << "NO" << std::endl; }
 
-    /// ========================================================================
+
+    //    for(auto &rit:right){
+    //        for(auto lit = left_beg; lit != left.end(); ++lit){
+    //            if(stack.is_empty() != true){
+
+    //                if (stack.get_last() == rit)
+    //            }
+    //            else { stack.push_back(*lit); }
+    //        }
+    //    }
+
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -14,7 +14,6 @@ SOURCES += main.cpp Fibonacci/Fibonacci.cpp \
     Technopark/1_sem/anagram.cpp \
     List/duallylist.cpp \
     Technopark/1_sem/circlearrbuff.cpp
-    Stack/stack.cpp \
 
 
 HEADERS += \
@@ -29,4 +28,5 @@ HEADERS += \
     Vector/vector.h \
     Technopark/1_sem/anagram.h \
     List/duallylist.h \
-    Technopark/1_sem/circlearrbuff.h
+    Technopark/1_sem/circlearrbuff.h \
+    Stack/stack.h
