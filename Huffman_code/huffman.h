@@ -13,6 +13,7 @@
 template<class data_t, class priority_t>
 class Huffman
 {
+
 public:
     Huffman();
     ~Huffman();
@@ -75,7 +76,7 @@ private:
 
     void build_table_code(const bi_Node *root);
     data_t get_data(Huffman<data_t, priority_t>::bi_Node *root,
-                    const std::__cxx11::string &code, size_t &index);
+                    const std::string &code, size_t &index);
 
     std::string to_string_code(const std::vector<bool> &v);
     void destroy_bi_Node(Huffman<data_t, priority_t>::bi_Node *root);

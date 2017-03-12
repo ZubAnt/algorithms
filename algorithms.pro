@@ -13,7 +13,8 @@ SOURCES += main.cpp Fibonacci/Fibonacci.cpp \
     Technopark/1_sem/getprimes.cpp \
     Technopark/1_sem/anagram.cpp \
     List/duallylist.cpp \
-    Technopark/1_sem/circlearrbuff.cpp
+    Technopark/1_sem/circlearrbuff.cpp \
+    Technopark/1_sem/widepyramid.cpp
 
 
 HEADERS += \
@@ -29,4 +30,5 @@ HEADERS += \
     Technopark/1_sem/anagram.h \
     List/duallylist.h \
     Technopark/1_sem/circlearrbuff.h \
-    Stack/stack.h
+    Stack/stack.h \
+    Technopark/1_sem/widepyramid.h

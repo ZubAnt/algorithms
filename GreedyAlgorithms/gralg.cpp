@@ -108,3 +108,25 @@ void third_case(int n, std::vector<int> &v_out){
         }
     }
 }
+
+size_t numb_requests(std::vector<std::array<int, 2>> &v_pair)
+{
+    if(v_pair.empty()){
+
+        throw std::logic_error("empty input vector");
+    }
+    std::sort(v_pair.begin(), v_pair.end(), comp_by_end);
+
+    int rigth_border = (*v_pair.begin())[1];
+    size_t cnt = 1;
+
+    while(feof)
+    for(auto &it:v_pair){
+        if(it[0] >= rigth_border){
+            ++cnt;
+            rigth_border = it[1];
+        }
+    }
+
+    return cnt;
+}
