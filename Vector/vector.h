@@ -18,6 +18,8 @@ public:
     Type pop_back();
     Type operator[](size_t index);
     ~my_vector();
+    Type *begin(){ return Data; }
+    Type *end(){ return (Data + Size); }
 
 private:
     size_t Size;
@@ -33,14 +35,14 @@ my_vector<Type>::my_vector()
 {
     Size = 0;
     Capacity = 8;
-    Data = new Type[Capacity];
+    Data = new Type[Capacity + 1];
 }
 
 template<class Type>
 my_vector<Type>::my_vector(const my_vector<Type> &copy):
     Size(copy.Size),
     Capacity(copy.Capacity),
-    Data(new Type[Capacity])
+    Data(new Type[Capacity + 1])
 {
     std::copy(copy.Data, copy.Data + copy.Size, Data);
 }
@@ -51,7 +53,7 @@ my_vector<Type> &my_vector<Type>::operator=(const my_vector<Type> &obj)
     ~my_vector();
     Size = obj.Size;
     Capacity = obj.Capacity;
-    Data = new Type[Capacity];
+    Data = new Type[Capacity + 1];
     std::copy(obj.Data, obj.Data + obj.Size, Data);
     return *this;
 }
@@ -102,7 +104,7 @@ template<class Type>
 void my_vector<Type>::realloc_data()
 {
     size_t new_capacity = 2 * Capacity;
-    Type *new_data = new Type[new_capacity];
+    Type *new_data = new Type[new_capacity + 1];
 
     std::copy(Data, Data + Capacity, new_data);
     delete[] Data;
@@ -112,6 +114,3 @@ void my_vector<Type>::realloc_data()
 }
 
 #endif // VECTOR_H
-
-
-
